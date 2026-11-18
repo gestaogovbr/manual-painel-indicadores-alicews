@@ -1,0 +1,77 @@
+import os
+import sys
+
+from docutils import nodes
+from docutils.parsers.rst import roles
+
+# Role customizada para destaque (compatibilidade com padrão DELOG)
+def destaque_amarelo_claro_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    node = nodes.inline(text, text, classes=['destaque-amarelo-claro'])
+    return [node], []
+
+roles.register_local_role('destaque-amarelo-claro', destaque_amarelo_claro_role)
+
+sys.path.insert(0, os.path.abspath('.'))
+
+# ── Informações do projeto ────────────────────────────────────────────────────
+project = 'Painel de Indicadores AliceWS'
+copyright = '2026, Ministério da Gestão e Inovação em Serviços Públicos - MGI'
+author = 'COTIN/CGGES/DELOG/SEGES/MGI'
+release = '1.1'
+version = '1.1'
+
+# ── Extensões ─────────────────────────────────────────────────────────────────
+extensions = [
+    'sphinx.ext.duration',
+    'myst_parser',
+    'sphinx_copybutton',
+]
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md':  'markdown',
+}
+
+templates_path = ['_templates']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+language = 'pt_BR'
+
+root_doc = 'index'
+master_doc = 'index'
+
+# ── Tema sphinx-rtd-theme ─────────────────────────────────────────────────────
+html_theme = 'sphinx_rtd_theme'
+
+html_theme_options = {
+    'logo_only': False,
+    'display_version': True,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': False,
+    'collapse_navigation': False,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False,
+}
+
+html_static_path = ['_static']
+html_css_files = [
+    'custom.css',
+    'extra.css',
+]
+html_js_files = [
+    'custom.js',
+    'font-size.js',
+]
+
+html_title = 'Manual — Painel de Indicadores AliceWS'
+html_short_title = 'Painel AliceWS'
+
+# ── MyST Parser ───────────────────────────────────────────────────────────────
+myst_enable_extensions = [
+    'colon_fence',
+    'deflist',
+    'tasklist',
+    'html_image',
+]
+myst_heading_anchors = 4

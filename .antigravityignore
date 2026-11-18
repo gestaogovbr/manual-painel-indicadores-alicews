@@ -1,0 +1,30 @@
+# Dependências e ambientes virtuais
+node_modules/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Builds, caches e artefatos compilados (Sphinx / Read the Docs)
+.next/
+dist/
+build/
+_build/
+docs/build/
+docs/_build/
+out/
+target/
+.cache/
+
+# Arquivos pesados e logs
+.git/
+*.log
+*.sqlite
+*.db
+*.tar
+*.tar.gz
+*.zip
+*.pdf
+*.mp4
+*.mkv
